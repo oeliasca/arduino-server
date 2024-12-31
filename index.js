@@ -14,9 +14,25 @@ app.get("/arduino/dashboard", (req, res) => {
     <html>
 <body>
 <h1>Clima Rubí</h1>
-<p>humitat ambiental: ${params.ha}</p>
-<p>humitat terra: ${params.ht}</p>
-<p>temperatura: ${params.t}</p>
+<p>humitat ambiental: ${params.ha} %</p>
+<p>humitat terra: ${params.ht} %</p>
+<p>temperatura: ${params.t} ºC</p>
+</body>
+</html>
+    `);
+});
+
+app.post("/arduino/dashboard", (req, res) => {
+  const ha = req.body.ha;
+  const ht = req.body.ht;
+  const t = req.body.t;
+  res.send(`
+    <html>
+<body>
+<h1>Clima Rubí</h1>
+<p>humitat ambiental: ${ha} %</p>
+<p>humitat terra: ${ht} %</p>
+<p>temperatura: ${t} ºC</p>
 </body>
 </html>
     `);
